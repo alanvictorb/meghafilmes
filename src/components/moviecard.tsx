@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   View,
@@ -5,6 +6,8 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+
+import { router } from 'expo-router';
 
 import styles from '../constants/styles';
 
@@ -20,6 +23,7 @@ type FilmeProps = {
 export default function MovieCard({
   filme,
 }: FilmeProps) {
+
   return (
     <View style={styles.card}>
 
@@ -29,6 +33,7 @@ export default function MovieCard({
       />
 
       <View style={styles.info}>
+
         <Text style={styles.nome}>
           {filme.titulo}
         </Text>
@@ -37,14 +42,28 @@ export default function MovieCard({
           ⭐ {filme.nota}
         </Text>
 
-        <TouchableOpacity style={styles.botao}>
+        <TouchableOpacity
+          style={styles.botao}onPress={() =>
+            router.push({
+              pathname: '/detalhes',
+          
+              params: {
+                titulo: filme.titulo,
+                nota: filme.nota,
+                imagem: filme.imagem,
+              },
+            })
+          }
+        >
           <Text style={styles.textoBotao}>
             Ver Detalhes
           </Text>
         </TouchableOpacity>
-      </View>
 
+      </View>
     </View>
   );
+  
 }
+
 

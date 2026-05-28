@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   View,
@@ -39,4 +40,3 @@ export default function App() {
     </View>
   );
 }
-

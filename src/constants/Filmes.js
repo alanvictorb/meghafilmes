@@ -68,9 +68,57 @@ const filmes = [
     imagem:
       'https://m.media-amazon.com/images/S/pv-target-images/041b4475dd643a7986476e59e08eb23cdfb698c0ae22e8ccefd7ecd6559bfebe.jpg',
   },
+  {
+    id: '11',
+    titulo: 'Homem-Aranha',
+    nota: '9.0',
+    genero: 'Ação',
+    ano: '2021',
+    duracao: '2h 28min',
+    diretor: 'Jon Watts',
+    descricao:
+      'Peter Parker precisa enfrentar novos vilões enquanto tenta proteger as pessoas que ama.',
+    imagem:
+      'https://m.media-amazon.com/images/I/81Ae8fY+hxL.jpg',
+  },
+
+  {
+    id: '12',
+    titulo: 'Batman',
+    nota: '8.7',
+    genero: 'Ação/Suspense',
+    ano: '2022',
+    duracao: '2h 56min',
+    diretor: 'Matt Reeves',
+    descricao:
+      'Batman investiga uma série de crimes misteriosos em Gotham.',
+    imagem:
+      'https://m.media-amazon.com/images/I/71pVzWz4-sL.jpg',
+  },
+
+  {
+    id: '13',
+    titulo: 'Vingadores',
+    nota: '9.5',
+    genero: 'Ação/Ficção',
+    ano: '2012',
+    duracao: '2h 23min',
+    diretor: 'Joss Whedon',
+    descricao:
+      'Os maiores heróis da Terra se unem para salvar o planeta.',
+    imagem:
+      'https://m.media-amazon.com/images/I/81ExhpBEbHL.jpg',
+  },
 ];
 
+
+
+
+
+
 export default filmes;
+
+
 
 
 
