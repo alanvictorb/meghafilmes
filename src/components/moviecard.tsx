@@ -1,14 +1,11 @@
-
-import React from 'react';
 import {
-  View,
-  Text,
   Image,
+  Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 
 import { router } from 'expo-router';
-
 import styles from '../constants/styles';
 
 type FilmeProps = {
@@ -23,17 +20,14 @@ type FilmeProps = {
 export default function MovieCard({
   filme,
 }: FilmeProps) {
-
   return (
     <View style={styles.card}>
-
       <Image
         source={{ uri: filme.imagem }}
         style={styles.imagem}
       />
 
       <View style={styles.info}>
-
         <Text style={styles.nome}>
           {filme.titulo}
         </Text>
@@ -43,10 +37,10 @@ export default function MovieCard({
         </Text>
 
         <TouchableOpacity
-          style={styles.botao}onPress={() =>
+          style={styles.botao}
+          onPress={() =>
             router.push({
               pathname: '/detalhes',
-          
               params: {
                 titulo: filme.titulo,
                 nota: filme.nota,
@@ -59,11 +53,7 @@ export default function MovieCard({
             Ver Detalhes
           </Text>
         </TouchableOpacity>
-
       </View>
     </View>
   );
-  
 }
-
-

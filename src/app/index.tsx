@@ -1,20 +1,18 @@
 
-import React from 'react';
 import {
-  View,
-  Text,
   FlatList,
+  Text,
   TextInput,
+  View,
 } from 'react-native';
 
+import MovieCard from '../components/moviecard';
 import filmes from '../constants/filmes';
-import MovieCard from '../components/MovieCard';
 import styles from '../constants/styles';
 
 export default function App() {
   return (
     <View style={styles.container}>
-
       <Text style={styles.logo}>
         🎬 MegaFilmes
       </Text>
@@ -36,7 +34,6 @@ export default function App() {
           <MovieCard filme={item} />
         )}
       />
-
     </View>
   );
 }
