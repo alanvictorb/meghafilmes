@@ -2,7 +2,7 @@ import { FlatList, Text, View } from 'react-native';
 
 import MovieCard from '../components/moviecard';
 import favoritos from '../constants/favoritos';
-import filmes from '../constants/filmes';
+import filmes from '../constants/Filmes';
 import styles from '../constants/styles';
 
 export default function Favoritos() {

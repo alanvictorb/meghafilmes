@@ -11,7 +11,7 @@ import {
 import { router } from 'expo-router';
 
 import MovieCard from '../components/moviecard';
-import filmes from '../constants/filmes';
+import filmes from '../constants/Filmes';
 import styles from '../constants/styles';
 
 export default function App() {

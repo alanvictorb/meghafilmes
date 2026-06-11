@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import filmes from '../constants/filmes';
+import filmes from '../constants/Filmes';
 
 export default function Detalhes() {
   const { id } = useLocalSearchParams();
