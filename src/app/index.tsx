@@ -1,7 +1,7 @@
-
+import { useState } from 'react';
 import {
   FlatList,
-  Text,
+  Image,
   TextInput,
   View,
 } from 'react-native';
@@ -11,29 +11,42 @@ import filmes from '../constants/filmes';
 import styles from '../constants/styles';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.logo}>
-        🎬 MegaFilmes
-      </Text>
+  const [pesquisa, setPesquisa] = useState('');
+
+  const filmesFiltrados = filmes.filter((filme) =>
+  filme.titulo.toLowerCase().startsWith(pesquisa.toLowerCase())
+);
+return (
+  <View style={styles.container}>
+<Image
+source={require('../imagens/Logo.png')}
+  style={styles.logoImagem}
+  resizeMode="contain"
+/>
 
       <TextInput
         placeholder="Pesquisar filme..."
         placeholderTextColor="#999"
         style={styles.pesquisa}
+        value={pesquisa}
+        onChangeText={setPesquisa}
       />
 
-      <Text style={styles.subtitulo}>
-        Filmes em destaque
-      </Text>
+     <FlatList
+  data={filmesFiltrados}
+  keyExtractor={(item) => item.id}
+  renderItem={({ item }) => (
+    <MovieCard filme={item} />
+  )}
+  numColumns={4}
+  columnWrapperStyle={{
+    justifyContent:
+      filmesFiltrados.length < 4
+        ? 'center'
+        : 'space-around',
+  }}
+/>
 
-      <FlatList
-        data={filmes}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <MovieCard filme={item} />
-        )}
-      />
     </View>
   );
 }

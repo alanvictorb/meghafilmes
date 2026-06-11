@@ -20,40 +20,37 @@ type FilmeProps = {
 export default function MovieCard({
   filme,
 }: FilmeProps) {
+
+  if (!filme) {
+    return null;
+  }
+
   return (
-    <View style={styles.card}>
-      <Image
-        source={{ uri: filme.imagem }}
-        style={styles.imagem}
-      />
-
-      <View style={styles.info}>
-        <Text style={styles.nome}>
-          {filme.titulo}
-        </Text>
-
-        <Text style={styles.nota}>
-          ⭐ {filme.nota}
-        </Text>
-
-        <TouchableOpacity
-          style={styles.botao}
-          onPress={() =>
-            router.push({
-              pathname: '/detalhes',
-              params: {
-                titulo: filme.titulo,
-                nota: filme.nota,
-                imagem: filme.imagem,
-              },
-            })
-          }
-        >
-          <Text style={styles.textoBotao}>
-            Ver Detalhes
-          </Text>
-        </TouchableOpacity>
+    <TouchableOpacity
+      style={styles.card}
+      activeOpacity={0.8}
+      onPress={() =>
+        router.push({
+          pathname: '/detalhes',
+          params: {
+            id: filme.id,
+          },
+        })
+      }
+    >
+      <View style={styles.posterContainer}>
+        <Image
+          source={{ uri: filme.imagem }}
+          style={styles.imagem}
+          resizeMode="cover"
+        />
       </View>
-    </View>
+
+      <Text style={styles.nome}>
+        {filme.titulo}
+      </Text>
+
+    
+    </TouchableOpacity>
   );
 }
