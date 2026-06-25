@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import { router } from 'expo-router';
-
 import MovieCard from '../components/moviecard';
 import filmes from '../constants/Filmes';
 import styles from '../constants/styles';
@@ -25,61 +24,97 @@ export default function App() {
       )
     : filmes;
 
-  return (
-    <View style={styles.container}>
-      <Image
-        source={require('../imagens/Logo.png')}
-        style={styles.logoImagem}
-        resizeMode="contain"
-      />
+ return (
+  <View style={styles.container}>
+    <Image
+      source={require('../imagens/Logo.png')}
+      style={styles.logoImagem}
+      resizeMode="contain"
+    />
 
-      <TextInput
-        placeholder="Pesquisar filme..."
-        placeholderTextColor="#999"
-        style={styles.pesquisa}
-        value={pesquisa}
-        onChangeText={setPesquisa}
-      />
+    <TextInput
+      placeholder="Pesquisar filme..."
+      placeholderTextColor="#999"
+      style={styles.pesquisa}
+      value={pesquisa}
+      onChangeText={setPesquisa}
+    />
 
-     <Pressable
-  onPress={() => router.push('/favoritos')}
+<View
   style={{
-    backgroundColor: '#E50914',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 10,
-    alignSelf: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    gap: 10,
     marginBottom: 15,
   }}
 >
-  <Text
+  <Pressable
+    onPress={() => router.push('/favoritos')}
     style={{
-      color: '#FFF',
-      fontWeight: 'bold',
+      backgroundColor: '#E50914',
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      borderRadius: 10,
     }}
   >
-    ❤️ Favoritos
-  </Text>
-</Pressable>
+    <Text
+      style={{
+        color: '#FFF',
+        fontWeight: 'bold',
+      }}
+    >
+      ❤️ Favoritos
+    </Text>
+  </Pressable>
 
-      <FlatList
-        data={filmesFiltrados}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }: any) => (
-          <MovieCard filme={item} />
-        )}
-        numColumns={4}
-        columnWrapperStyle={{
-          justifyContent:
-            filmesFiltrados.length < 4
-              ? 'center'
-              : 'space-around',
-        }}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingBottom: 100,
-        }}
-      />
+  <Pressable
+    onPress={() => router.push('/compartilhar')}
+    style={{
+      backgroundColor: '#444',
+      paddingHorizontal: 20,
+      paddingVertical: 10,
+      borderRadius: 10,
+    }}
+  >
+    <Text
+      style={{
+        color: '#FFF',
+        fontWeight: 'bold',
+      }}
+    >
+      📤 Compartilhar
+    </Text>
+  </Pressable>
+</View>
+
+<FlatList
+  data={filmesFiltrados}
+  keyExtractor={(item) => item.id}
+  renderItem={({ item }) => (
+    <MovieCard filme={item} />
+  )}
+  numColumns={4}
+  columnWrapperStyle={{
+    justifyContent: 'space-around',
+  }}
+  ListFooterComponent={
+    <View style={styles.footer}>
+      <Text style={styles.footerTitulo}>
+        MegaFilmes © 2026
+      </Text>
+
+      <Text style={styles.footerTexto}>
+        Desenvolvido por Henrique Alan
+      </Text>
+
+      <Text style={styles.footerTexto}>
+        Projeto Escolar em React Native
+      </Text>
     </View>
-  );
+  }
+/>
+
+  </View>
+);
+  
 }

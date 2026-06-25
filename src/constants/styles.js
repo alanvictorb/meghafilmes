@@ -7,7 +7,7 @@ container: {
   paddingTop: 0,
   paddingHorizontal: 20,
 },
-logoImagem: {
+ logoImagem: {
   width: 500,
   height: 110,
   alignSelf: 'center',
@@ -31,7 +31,7 @@ logoImagem: {
     marginBottom: 15,
   },
 
-card: {
+ card: {
   width: 180,
   marginBottom: 20,
   marginHorizontal: 10,
@@ -58,13 +58,13 @@ card: {
     textAlign: 'center',
   },
 
-  posterContainer: {
-    width: 180,
-    height: 270,
-    borderRadius: 12,
-    overflow: 'hidden',
-    alignSelf: 'center',
-  },
+posterContainer: {
+  width: 180,
+  height: 270,
+  borderRadius: 12,
+  overflow: 'hidden',
+  alignSelf: 'center',
+},
 
   notaContainer: {
     alignSelf: 'flex-start',
@@ -73,6 +73,28 @@ card: {
     paddingVertical: 4,
     borderRadius: 20,
     marginTop: 6,
+  },
+
+  footer: {
+    marginTop: 30,
+    paddingTop: 20,
+    paddingBottom: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#333',
+    alignItems: 'center',
+  },
+
+  footerTitulo: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+
+  footerTexto: {
+    color: '#AAA',
+    fontSize: 12,
+    textAlign: 'center',
   },
 });
 
