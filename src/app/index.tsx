@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   View,
+  useWindowDimensions,
 } from 'react-native';
 
 import { router } from 'expo-router';
@@ -15,6 +16,10 @@ import styles from '../constants/styles';
 
 export default function App() {
   const [pesquisa, setPesquisa] = useState('');
+
+  const { width } = useWindowDimensions();
+
+  const numColunas = width < 768 ? 3 : 4;
 
   const filmesFiltrados = pesquisa.trim()
     ? filmes.filter((filme) =>
@@ -93,7 +98,8 @@ export default function App() {
   renderItem={({ item }) => (
     <MovieCard filme={item} />
   )}
-  numColumns={4}
+  numColumns={numColunas}
+  key={numColunas}
   columnWrapperStyle={{
     justifyContent: 'space-around',
   }}
@@ -104,7 +110,7 @@ export default function App() {
       </Text>
 
       <Text style={styles.footerTexto}>
-        Desenvolvido por Henrique Alan
+        Desenvolvido por Alan, Gabriel, Henri e Emily
       </Text>
 
       <Text style={styles.footerTexto}>

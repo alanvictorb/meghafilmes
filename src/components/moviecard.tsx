@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  useWindowDimensions,
 } from 'react-native';
 
 import { router } from 'expo-router';
@@ -19,6 +20,10 @@ type FilmeProps = {
 export default function MovieCard({
   filme,
 }: FilmeProps) {
+  const { width } = useWindowDimensions();
+
+  const mobile = width < 768;
+
   const [favorito, setFavorito] = useState(
     favoritos.includes(filme.id)
   );
@@ -42,46 +47,65 @@ export default function MovieCard({
     }
   }
 
-  return (
-    <TouchableOpacity
-      style={styles.card}
-      activeOpacity={0.8}
-      onPress={() =>
-        router.push({
-          pathname: '/detalhes',
-          params: {
-            id: filme.id,
-          },
-        })
-      }
+return (
+  <TouchableOpacity
+    style={[
+      styles.card,
+      mobile && {
+        width: 120,
+        marginHorizontal: 2,
+      },
+    ]}
+    activeOpacity={0.8}
+    onPress={() =>
+      router.push({
+        pathname: '/detalhes',
+        params: {
+          id: filme.id,
+        },
+      })
+    }
+  >
+    <View
+      style={[
+        styles.posterContainer,
+        mobile && {
+          width: 120,
+          height: 180,
+        },
+      ]}
     >
-      <View style={styles.posterContainer}>
-        <Image
-          source={{ uri: filme.imagem }}
-          style={styles.imagem}
-          resizeMode="cover"
-        />
+      <Image
+        source={{ uri: filme.imagem }}
+        style={[
+          styles.imagem,
+          mobile && {
+            height: 180,
+          },
+        ]}
+        resizeMode="cover"
+      />
 
-        <Pressable
-          onPress={alternarFavorito}
-          style={{
-            position: 'absolute',
-            top: 10,
-            right: 10,
-            backgroundColor: 'rgba(0,0,0,0.7)',
-            padding: 6,
-            borderRadius: 20,
-          }}
-        >
-          <Text style={{ fontSize: 20 }}>
-            {favorito ? '❤️' : '🤍'}
-          </Text>
-        </Pressable>
-      </View>
+      <Pressable
+        onPress={alternarFavorito}
+        style={{
+          position: 'absolute',
+          top: 10,
+          right: 10,
+          backgroundColor: 'rgba(0,0,0,0.7)',
+          padding: 6,
+          borderRadius: 20,
+        }}
+      >
+        <Text style={{ fontSize: 20 }}>
+          {favorito ? '❤️' : '🤍'}
+        </Text>
+      </Pressable>
+    </View>
 
-      <Text style={styles.nome}>
-        {filme.titulo}
-      </Text>
-    </TouchableOpacity>
-  );
+    <Text style={styles.nome}>
+      {filme.titulo}
+    </Text>
+  </TouchableOpacity>
+);
 }

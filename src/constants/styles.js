@@ -8,7 +8,8 @@ container: {
   paddingHorizontal: 20,
 },
  logoImagem: {
-  width: 500,
+  width: '100%',
+  maxWidth: 500,
   height: 110,
   alignSelf: 'center',
   marginBottom: 10,
@@ -31,10 +32,11 @@ container: {
     marginBottom: 15,
   },
 
- card: {
+card: {
   width: 180,
+  maxWidth: 180,
   marginBottom: 20,
-  marginHorizontal: 10,
+  marginHorizontal: 5,
 },
 
   imagem: {
@@ -96,6 +98,65 @@ posterContainer: {
     fontSize: 12,
     textAlign: 'center',
   },
+
+
+  content: {
+  padding: 20,
+  alignItems: 'center',
+},
+
+titulo: {
+  color: '#FFF',
+  fontSize: 32,
+  fontWeight: 'bold',
+  textAlign: 'center',
+},
+
+infoContainer: {
+  width: '100%',
+  backgroundColor: '#181818',
+  borderRadius: 15,
+  padding: 15,
+  marginTop: 20,
+},
+
+info: {
+  color: '#FFF',
+  fontSize: 17,
+  marginBottom: 10,
+},
+
+sinopseTitulo: {
+  color: '#FFF',
+  fontSize: 24,
+  fontWeight: 'bold',
+  marginTop: 25,
+  marginBottom: 10,
+  alignSelf: 'flex-start',
+},
+
+descricao: {
+  color: '#CCC',
+  fontSize: 16,
+  lineHeight: 25,
+  backgroundColor: '#181818',
+  padding: 15,
+  borderRadius: 15,
+  width: '100%',
+},
+
+erro: {
+  color: '#FFF',
+  fontSize: 22,
+  textAlign: 'center',
+  marginTop: 100,
+},
 });
+
+
+
+
+
+
 
 export default styles;

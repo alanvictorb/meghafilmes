@@ -1,33 +1,63 @@
-import { Alert, Button, Share } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import {
+  Alert,
+  Button,
+  Pressable,
+  Share,
+  Text,
+  View,
+} from 'react-native';
 
-const ShareExample = () => {
+import { router } from 'expo-router';
+
+import styles from '../constants/styles';
+
+export default function Compartilhar() {
   const onShare = async () => {
     try {
-      const result = await Share.share({
+      await Share.share({
         message:
-          'React Native | A framework for building native apps using React',
+          'Confira o MegaFilmes! 🎬 Projeto desenvolvido em React Native.',
       });
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
     } catch (error: any) {
       Alert.alert(error.message);
     }
   };
-  return (
-    <SafeAreaProvider>
-      <SafeAreaView>
-        <Button onPress={onShare} title="Share" />
-      </SafeAreaView>
-    </SafeAreaProvider>
-  );
-};
 
-export default ShareExample;
+  return (
+    <View
+      style={[
+        styles.container,
+        {
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+      ]}
+    >
+      <Pressable
+        onPress={() => router.back()}
+        style={{
+          position: 'absolute',
+          top: 20,
+          left: 20,
+          backgroundColor: '#E50914',
+          padding: 10,
+          borderRadius: 10,
+        }}
+      >
+        <Text
+          style={{
+            color: '#FFF',
+            fontWeight: 'bold',
+          }}
+        >
+         Voltar
+        </Text>
+      </Pressable>
+
+      <Button
+        title="Compartilhar MegaFilmes"
+        onPress={onShare}
+      />
+    </View>
+  );
+}

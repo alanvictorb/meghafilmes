@@ -1,5 +1,10 @@
-import { FlatList, Text, View } from 'react-native';
-
+import { router } from 'expo-router';
+import {
+  FlatList,
+  Pressable,
+  Text,
+  View,
+} from 'react-native';
 import MovieCard from '../components/moviecard';
 import favoritos from '../constants/favoritos';
 import filmes from '../constants/Filmes';
@@ -11,7 +16,27 @@ export default function Favoritos() {
   );
 
   return (
+    
     <View style={styles.container}>
+      <Pressable
+  onPress={() => router.back()}
+  style={{
+    backgroundColor: '#E50914',
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: 'flex-start',
+    marginBottom: 20,
+  }}
+>
+  <Text
+    style={{
+      color: '#FFF',
+      fontWeight: 'bold',
+    }}
+  >
+    Voltar
+  </Text>
+</Pressable>
       <Text
         style={{
           color: '#FFF',
